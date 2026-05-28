@@ -16,7 +16,7 @@
 <body class="bg-slate-50 font-sans text-slate-900 overflow-x-hidden">
 
     <!-- LOGIN SCREEN -->
-    <section id="login-screen" class="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-slate-50">
+    <section id="login-screen" class="hidden">
         <div class="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-blue-500/5 rounded-full blur-[100px]"></div>
         <div class="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-emerald-500/10 rounded-full blur-[100px]"></div>
         
@@ -60,8 +60,8 @@
         </div>
     </section>
 
-    <!-- MAIN APP WRAPPER (HIDDEN INITIALLY) -->
-    <div id="main-app" class="hidden min-h-screen flex flex-col md:flex-row">
+    <!-- MAIN APP WRAPPER -->
+    <div id="main-app" class="min-h-screen flex flex-col md:flex-row">
         
         <!-- SIDEBAR -->
         <aside id="sidebar" class="w-64 bg-[#0f172a] text-white flex-col fixed inset-y-0 left-0 hidden md:flex transition-transform z-50">
@@ -84,7 +84,7 @@
                 <button class="nav-item"><i data-lucide="settings"></i> Configurações</button>
             </nav>
 
-            <div class="p-6 border-t border-white/10 space-y-6">
+            <div class="p-6 border-t border-white/10">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center text-[10px] font-bold">SF</div>
                     <div>
@@ -92,9 +92,6 @@
                         <p class="text-[10px] text-blue-400">Administradora</p>
                     </div>
                 </div>
-                <button id="logout-btn" class="flex items-center gap-3 text-blue-200/60 hover:text-white text-sm font-medium transition-colors cursor-pointer w-full text-left">
-                    <i data-lucide="log-out" class="w-4 h-4"></i> Sair do Sistema
-                </button>
             </div>
         </aside>
 

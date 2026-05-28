@@ -76,10 +76,8 @@ const statChildren = document.getElementById('stat-children');
 
 // --- INICIALIZAÇÃO ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Verificar Auth
-    if (localStorage.getItem('cativeiro_logged') === 'true') {
-        showApp();
-    }
+    // Ir direto para o app (acesso livre)
+    showApp();
 
     // Inicializar Ícones
     lucide.createIcons();
@@ -107,27 +105,39 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- AUTENTICAÇÃO ---
-document.getElementById('login-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.innerHTML = 'Entrando...';
-    btn.disabled = true;
+const loginForm = document.getElementById('login-form');
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button');
+        if (btn) {
+            btn.innerHTML = 'Entrando...';
+            btn.disabled = true;
+        }
 
-    sessionStorage.removeItem('cativeiro_logged_out');
-    localStorage.setItem('cativeiro_logged', 'true');
-    showApp();
-});
+        sessionStorage.removeItem('cativeiro_logged_out');
+        localStorage.setItem('cativeiro_logged', 'true');
+        showApp();
+    });
+}
 
-document.getElementById('logout-btn').addEventListener('click', () => {
-    localStorage.removeItem('cativeiro_logged');
-    sessionStorage.setItem('cativeiro_logged_out', 'true');
-    location.reload();
-});
+const logoutBtn = document.getElementById('logout-btn');
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('cativeiro_logged');
+        sessionStorage.setItem('cativeiro_logged_out', 'true');
+        location.reload();
+    });
+}
 
 function showApp() {
-    loginScreen.classList.add('hidden');
-    mainApp.classList.remove('hidden');
-    mainApp.classList.add('flex');
+    if (loginScreen) {
+        loginScreen.classList.add('hidden');
+    }
+    if (mainApp) {
+        mainApp.classList.remove('hidden');
+        mainApp.classList.add('flex');
+    }
 }
 
 // --- NAVEGAÇÃO ---
